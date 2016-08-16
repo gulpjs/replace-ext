@@ -8,17 +8,21 @@
   "main": "./index.js",
   "dependencies": {},
   "devDependencies": {
-    "mocha": "~1.17.0",
-    "should": "~3.1.0",
-    "mocha-lcov-reporter": "~0.0.1",
-    "coveralls": "~2.6.1",
-    "istanbul": "~0.2.3",
-    "rimraf": "~2.2.5",
-    "jshint": "~2.4.1"
+    "eslint": "^1.10.3",
+    "eslint-config-gulp": "^2.0.0",
+    "expect": "^1.16.0",
+    "istanbul": "^0.4.3",
+    "istanbul-coveralls": "^1.0.3",
+    "jscs": "^2.3.5",
+    "jscs-preset-gulp": "^1.0.0",
+    "mocha": "^2.4.5"
   },
   "scripts": {
-    "test": "mocha --reporter spec && jshint",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "lint": "eslint . && jscs index.js test/",
+    "pretest": "npm run lint",
+    "test": "mocha --async-only",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly",
+    "coveralls": "npm run cover && istanbul-coveralls"
   },
   "engines": {
     "node": ">= 0.4"
