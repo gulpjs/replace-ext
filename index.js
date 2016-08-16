@@ -1,6 +1,8 @@
+'use strict';
+
 var path = require('path');
 
-module.exports = function(npath, ext) {
+function replaceExt(npath, ext) {
   if (typeof npath !== 'string') {
     return npath;
   }
@@ -11,4 +13,6 @@ module.exports = function(npath, ext) {
 
   var nFileName = path.basename(npath, path.extname(npath)) + ext;
   return path.join(path.dirname(npath), nFileName);
-};
+}
+
+module.exports = replaceExt;
