@@ -1,15 +1,12 @@
 {
-  "name":"replace-ext",
-  "description":"Replaces a file extension with another one",
-  "version":"0.0.0",
-  "homepage":"http://github.com/wearefractal/replace-ext",
-  "repository":"git://github.com/wearefractal/replace-ext.git",
-  "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
-  "main":"./index.js",
-
-  "dependencies":{
-
-  },
+  "name": "replace-ext",
+  "description": "Replaces a file extension with another one",
+  "version": "0.0.1",
+  "homepage": "http://github.com/wearefractal/replace-ext",
+  "repository": "git://github.com/wearefractal/replace-ext.git",
+  "author": "Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
+  "main": "./index.js",
+  "dependencies": {},
   "devDependencies": {
     "mocha": "~1.17.0",
     "should": "~3.1.0",
@@ -26,10 +23,10 @@
   "engines": {
     "node": ">= 0.4"
   },
-  "licenses":[
+  "licenses": [
     {
-      "type":"MIT",
-      "url":"http://github.com/wearefractal/replace-ext/raw/master/LICENSE"
+      "type": "MIT",
+      "url": "http://github.com/wearefractal/replace-ext/raw/master/LICENSE"
     }
   ]
 }
