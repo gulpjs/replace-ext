@@ -47,4 +47,18 @@ describe('replace-ext', function() {
     expect(result).toEqual(expected);
     done();
   });
+
+  it('should not replace when 1st arg is not a string (null)', function(done) {
+    var result = replaceExt(null, '.js');
+    expect(result).toEqual(null);
+    done();
+  });
+
+  it('should not replace when 1st arg is not a string (object)', function(done) {
+    var obj = {};
+    var result = replaceExt(obj, '.js');
+    expect(result).toEqual(obj);
+    done();
+  });
+
 });
