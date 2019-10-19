@@ -6,7 +6,7 @@
 
 # replace-ext
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image]][gitter-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Azure Pipelines Build Status][azure-pipelines-image]][azure-pipelines-url] [![Travis Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image]][gitter-url]
 
 Replaces a file extension with another one.
 
@@ -36,6 +36,9 @@ MIT
 [downloads-image]: http://img.shields.io/npm/dm/replace-ext.svg
 [npm-url]: https://www.npmjs.com/package/replace-ext
 [npm-image]: http://img.shields.io/npm/v/replace-ext.svg
+
+[azure-pipelines-url]: https://dev.azure.com/gulpjs/replace-ext/_build/latest?branchName=master
+[azure-pipelines-image]: https://dev.azure.com/gulpjs/replace-ext/_apis/build/status/replace-ext?branchName=master
 
 [travis-url]: https://travis-ci.org/gulpjs/replace-ext
 [travis-image]: http://img.shields.io/travis/gulpjs/replace-ext.svg?label=travis-ci
