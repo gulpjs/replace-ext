@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var os = require('os');
 
 var expect = require('expect');
 
@@ -61,4 +62,27 @@ describe('replace-ext', function() {
     done();
   });
 
+  it('Should preserve the first dot of relative dir name.', function(done) {
+    if (os.platform() === 'win32') {
+      expect(replaceExt('a/b/c.js', '.ts')).toEqual('a\\b\\c.ts');
+      expect(replaceExt('./a/b/c.js', '.ts')).toEqual('.\\a\\b\\c.ts');
+      expect(replaceExt('../a/b/c.js', '.ts')).toEqual('..\\a\\b\\c.ts');
+      expect(replaceExt('/a/b/c.js', '.ts')).toEqual('\\a\\b\\c.ts');
+
+      expect(replaceExt('C:/a/b/c.js', '.ts')).toEqual('C:\\a\\b\\c.ts');
+
+      expect(replaceExt('a\\b\\c.js', '.ts')).toEqual('a\\b\\c.ts');
+      expect(replaceExt('.\\a\\b\\c.js', '.ts')).toEqual('.\\a\\b\\c.ts');
+      expect(replaceExt('..\\a\\b\\c.js', '.ts')).toEqual('..\\a\\b\\c.ts');
+      expect(replaceExt('\\a\\b\\c.js', '.ts')).toEqual('\\a\\b\\c.ts');
+
+      expect(replaceExt('C:\\a\\b\\c.js', '.ts')).toEqual('C:\\a\\b\\c.ts');
+    } else {
+      expect(replaceExt('a/b/c.js', '.ts')).toEqual('a/b/c.ts');
+      expect(replaceExt('./a/b/c.js', '.ts')).toEqual('./a/b/c.ts');
+      expect(replaceExt('../a/b/c.js', '.ts')).toEqual('../a/b/c.ts');
+      expect(replaceExt('/a/b/c.js', '.ts')).toEqual('/a/b/c.ts');
+    }
+    done();
+  });
 });
