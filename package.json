@@ -1,6 +1,6 @@
 {
   "name": "replace-ext",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Replaces a file extension with another one.",
   "author": "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
   "contributors": [
