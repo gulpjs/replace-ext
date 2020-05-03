@@ -11,22 +11,14 @@ function replaceExt(npath, ext) {
     return npath;
   }
 
-  var nFileName = path.basename(npath, path.extname(npath)) + ext;
-  var nFilepath = path.join(path.dirname(npath), nFileName);
+  // Mutating the object for performance - node creates new object per parse()
+  var parsed = path.parse(npath);
+  // Overwrite the extension with new one
+  parsed.ext = ext;
+  // Delete basename because it is used if exists
+  delete parsed.base;
 
-  // Because `path.join` removes the head './' from the given path.
-  // This removal can cause a problem when passing the result to `require` or
-  // `import`.
-  if (startsWithSingleDot(npath)) {
-    return '.' + path.sep + nFilepath;
-  }
-
-  return nFilepath;
-}
-
-function startsWithSingleDot(fpath) {
-  var first2chars = fpath.slice(0, 2);
-  return first2chars === '.' + path.sep || first2chars === './';
+  return path.format(parsed);
 }
 
 module.exports = replaceExt;
