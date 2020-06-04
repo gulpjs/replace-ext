@@ -9,27 +9,21 @@ env:
 
 jobs:
   prettier:
-    name: Formatter
+    name: Format code
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
 
       - name: Prettier
-        uses: gulpjs/prettier_action@v2.2
+        uses: gulpjs/prettier_action@v3.0
         with:
-          # Push back to the same branch that was checked out
-          branch: ${{ github.head_ref }}
-          # This part is also where you can pass other options, for example:
           commit_message: 'Build: Run prettier'
           prettier_options: '--write .'
 
   test:
-    needs: prettier
     name: Tests for Node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
