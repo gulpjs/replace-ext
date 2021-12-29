@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://gulpjs.com">
+  <a href="https://gulpjs.com">
     <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
   </a>
 </p>
@@ -29,12 +29,6 @@ Replaces the extension from `path` with `extension` and returns the updated path
 
 Does not replace the extension if `path` is not a string or is empty.
 
-## `replace-ext` for enterprise
-
-Available as part of the Tidelift Subscription.
-
-The maintainers of `replace-ext` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.][tidelift-url]
-
 ## License
 
 MIT
@@ -49,6 +43,4 @@ MIT
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/replace-ext
 [coveralls-image]: https://img.shields.io/coveralls/gulpjs/replace-ext/master.svg?style=flat-square
-
-[tidelift-url]: https://tidelift.com/subscription/pkg/npm-replace-ext?utm_source=npm-replace-ext&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
 <!-- prettier-ignore-end -->
