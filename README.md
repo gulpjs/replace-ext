@@ -39,7 +39,7 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/replace-ext.svg?style=flat-square
 
 [ci-url]: https://github.com/gulpjs/replace-ext/actions?query=workflow:dev
-[ci-image]: https://img.shields.io/github/workflow/status/gulpjs/replace-ext/dev?style=flat-square
+[ci-image]: https://img.shields.io/github/actions/workflow/status/gulpjs/replace-ext/dev.yml?branch=master&style=flat-square
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/replace-ext
 [coveralls-image]: https://img.shields.io/coveralls/gulpjs/replace-ext/master.svg?style=flat-square
