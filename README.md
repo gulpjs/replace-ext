@@ -13,10 +13,10 @@ Replaces a file extension with another one.
 ## Usage
 
 ```js
-var replaceExt = require('replace-ext');
+var replaceExt = require("replace-ext");
 
-var path = '/some/dir/file.js';
-var newPath = replaceExt(path, '.coffee');
+var path = "/some/dir/file.js";
+var newPath = replaceExt(path, ".coffee");
 
 console.log(newPath); // /some/dir/file.coffee
 ```

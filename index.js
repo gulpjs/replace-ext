@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-var path = require('path');
+var path = require("path");
 
 function replaceExt(npath, ext) {
-  if (typeof npath !== 'string') {
+  if (typeof npath !== "string") {
     return npath;
   }
 
@@ -18,7 +18,7 @@ function replaceExt(npath, ext) {
   // This removal can cause a problem when passing the result to `require` or
   // `import`.
   if (startsWithSingleDot(npath)) {
-    return '.' + path.sep + nFilepath;
+    return "." + path.sep + nFilepath;
   }
 
   return nFilepath;
@@ -26,7 +26,7 @@ function replaceExt(npath, ext) {
 
 function startsWithSingleDot(fpath) {
   var first2chars = fpath.slice(0, 2);
-  return first2chars === '.' + path.sep || first2chars === './';
+  return first2chars === "." + path.sep || first2chars === "./";
 }
 
 module.exports = replaceExt;
