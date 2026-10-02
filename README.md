@@ -29,6 +29,16 @@ Replaces the extension from `path` with `extension` and returns the updated path
 
 Does not replace the extension if `path` is not a string or is empty.
 
+## Strict No LLM / No AI Policy
+
+No LLMs for issues.
+
+No LLMs for patches / pull requests.
+
+No LLMs for comments on the bug tracker, including translation.
+
+English is encouraged, but not required. You are welcome to post in your native language and rely on others to have their own translation tools of choice to interpret your words.
+
 ## License
 
 MIT
@@ -38,9 +48,9 @@ MIT
 [npm-url]: https://www.npmjs.com/package/replace-ext
 [npm-image]: https://img.shields.io/npm/v/replace-ext.svg?style=flat-square
 
-[ci-url]: https://github.com/gulpjs/replace-ext/actions?query=workflow:dev
-[ci-image]: https://img.shields.io/github/actions/workflow/status/gulpjs/replace-ext/dev.yml?branch=master&style=flat-square
+[ci-url]: https://github.com/gulpjs/replace-ext/actions/workflows/dev.yml
+[ci-image]: https://img.shields.io/github/actions/workflow/status/gulpjs/replace-ext/dev.yml?style=flat-square
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/replace-ext
-[coveralls-image]: https://img.shields.io/coveralls/gulpjs/replace-ext/master.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/gulpjs/replace-ext/main.svg?style=flat-square
 <!-- prettier-ignore-end -->
