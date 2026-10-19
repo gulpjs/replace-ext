@@ -1,87 +1,94 @@
 "use strict";
 
-var path = require("path");
-var os = require("os");
-
-var expect = require("expect");
+var path = require("node:path");
+var os = require("node:os");
+var assert = require("node:assert");
+var { describe, it } = require("node:test");
 
 var replaceExt = require("../");
 
 describe("replace-ext", function () {
-  it("returns a valid replaced extension on long path", function (done) {
+  it("returns a valid replaced extension on long path", function () {
     var fname = path.join(__dirname, "./fixtures/test.coffee");
     var expected = path.join(__dirname, "./fixtures/test.js");
     var result = replaceExt(fname, ".js");
-    expect(result).toEqual(expected);
-    done();
+    assert.deepStrictEqual(result, expected);
   });
 
-  it("returns a valid replaced extension on basename", function (done) {
+  it("returns a valid replaced extension on basename", function () {
     var fname = "test.coffee";
     var expected = "test.js";
     var result = replaceExt(fname, ".js");
-    expect(result).toEqual(expected);
-    done();
+    assert.deepStrictEqual(result, expected);
   });
 
-  it("should not return a valid replaced extension on empty string", function (done) {
+  it("should not return a valid replaced extension on empty string", function () {
     var fname = "";
     var expected = "";
     var result = replaceExt(fname, ".js");
-    expect(result).toEqual(expected);
-    done();
+    assert.deepStrictEqual(result, expected);
   });
 
-  it("returns a valid removed extension on long path", function (done) {
+  it("returns a valid removed extension on long path", function () {
     var fname = path.join(__dirname, "./fixtures/test.coffee");
     var expected = path.join(__dirname, "./fixtures/test");
     var result = replaceExt(fname, "");
-    expect(result).toEqual(expected);
-    done();
+    assert.deepStrictEqual(result, expected);
   });
 
-  it("returns a valid added extension on long path", function (done) {
+  it("returns a valid added extension on long path", function () {
     var fname = path.join(__dirname, "./fixtures/test");
     var expected = path.join(__dirname, "./fixtures/test.js");
     var result = replaceExt(fname, ".js");
-    expect(result).toEqual(expected);
-    done();
+    assert.deepStrictEqual(result, expected);
   });
 
-  it("should not replace when 1st arg is not a string (null)", function (done) {
+  it("should not replace when 1st arg is not a string (null)", function () {
     var result = replaceExt(null, ".js");
-    expect(result).toEqual(null);
-    done();
+    assert.deepStrictEqual(result, null);
   });
 
-  it("should not replace when 1st arg is not a string (object)", function (done) {
+  it("should not replace when 1st arg is not a string (object)", function () {
     var obj = {};
     var result = replaceExt(obj, ".js");
-    expect(result).toEqual(obj);
-    done();
+    assert.deepStrictEqual(result, obj);
   });
 
-  it("Should preserve the first dot of relative dir name.", function (done) {
+  it("Should preserve the first dot of relative dir name.", function () {
     if (os.platform() === "win32") {
-      expect(replaceExt("a/b/c.js", ".ts")).toEqual("a\\b\\c.ts");
-      expect(replaceExt("./a/b/c.js", ".ts")).toEqual(".\\a\\b\\c.ts");
-      expect(replaceExt("../a/b/c.js", ".ts")).toEqual("..\\a\\b\\c.ts");
-      expect(replaceExt("/a/b/c.js", ".ts")).toEqual("\\a\\b\\c.ts");
+      assert.deepStrictEqual(replaceExt("a/b/c.js", ".ts"), "a\\b\\c.ts");
+      assert.deepStrictEqual(replaceExt("./a/b/c.js", ".ts"), ".\\a\\b\\c.ts");
+      assert.deepStrictEqual(
+        replaceExt("../a/b/c.js", ".ts"),
+        "..\\a\\b\\c.ts",
+      );
+      assert.deepStrictEqual(replaceExt("/a/b/c.js", ".ts"), "\\a\\b\\c.ts");
 
-      expect(replaceExt("C:/a/b/c.js", ".ts")).toEqual("C:\\a\\b\\c.ts");
+      assert.deepStrictEqual(
+        replaceExt("C:/a/b/c.js", ".ts"),
+        "C:\\a\\b\\c.ts",
+      );
 
-      expect(replaceExt("a\\b\\c.js", ".ts")).toEqual("a\\b\\c.ts");
-      expect(replaceExt(".\\a\\b\\c.js", ".ts")).toEqual(".\\a\\b\\c.ts");
-      expect(replaceExt("..\\a\\b\\c.js", ".ts")).toEqual("..\\a\\b\\c.ts");
-      expect(replaceExt("\\a\\b\\c.js", ".ts")).toEqual("\\a\\b\\c.ts");
+      assert.deepStrictEqual(replaceExt("a\\b\\c.js", ".ts"), "a\\b\\c.ts");
+      assert.deepStrictEqual(
+        replaceExt(".\\a\\b\\c.js", ".ts"),
+        ".\\a\\b\\c.ts",
+      );
+      assert.deepStrictEqual(
+        replaceExt("..\\a\\b\\c.js", ".ts"),
+        "..\\a\\b\\c.ts",
+      );
+      assert.deepStrictEqual(replaceExt("\\a\\b\\c.js", ".ts"), "\\a\\b\\c.ts");
 
-      expect(replaceExt("C:\\a\\b\\c.js", ".ts")).toEqual("C:\\a\\b\\c.ts");
+      assert.deepStrictEqual(
+        replaceExt("C:\\a\\b\\c.js", ".ts"),
+        "C:\\a\\b\\c.ts",
+      );
     } else {
-      expect(replaceExt("a/b/c.js", ".ts")).toEqual("a/b/c.ts");
-      expect(replaceExt("./a/b/c.js", ".ts")).toEqual("./a/b/c.ts");
-      expect(replaceExt("../a/b/c.js", ".ts")).toEqual("../a/b/c.ts");
-      expect(replaceExt("/a/b/c.js", ".ts")).toEqual("/a/b/c.ts");
+      assert.deepStrictEqual(replaceExt("a/b/c.js", ".ts"), "a/b/c.ts");
+      assert.deepStrictEqual(replaceExt("./a/b/c.js", ".ts"), "./a/b/c.ts");
+      assert.deepStrictEqual(replaceExt("../a/b/c.js", ".ts"), "../a/b/c.ts");
+      assert.deepStrictEqual(replaceExt("/a/b/c.js", ".ts"), "/a/b/c.ts");
     }
-    done();
   });
 });
