@@ -2,7 +2,6 @@
 
 var path = require("node:path");
 var os = require("node:os");
-
 var assert = require("node:assert");
 var { describe, it } = require("node:test");
 
