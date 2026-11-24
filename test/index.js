@@ -1,16 +1,14 @@
-"use strict";
+import path from "node:path";
+import os from "node:os";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
-var path = require("node:path");
-var os = require("node:os");
-var assert = require("node:assert");
-var { describe, it } = require("node:test");
-
-var replaceExt = require("../");
+import replaceExt from "../index.js";
 
 describe("replace-ext", function () {
   it("returns a valid replaced extension on long path", function () {
-    var fname = path.join(__dirname, "./fixtures/test.coffee");
-    var expected = path.join(__dirname, "./fixtures/test.js");
+    var fname = path.join(import.meta.dirname, "./fixtures/test.coffee");
+    var expected = path.join(import.meta.dirname, "./fixtures/test.js");
     var result = replaceExt(fname, ".js");
     assert.deepStrictEqual(result, expected);
   });
@@ -30,15 +28,15 @@ describe("replace-ext", function () {
   });
 
   it("returns a valid removed extension on long path", function () {
-    var fname = path.join(__dirname, "./fixtures/test.coffee");
-    var expected = path.join(__dirname, "./fixtures/test");
+    var fname = path.join(import.meta.dirname, "./fixtures/test.coffee");
+    var expected = path.join(import.meta.dirname, "./fixtures/test");
     var result = replaceExt(fname, "");
     assert.deepStrictEqual(result, expected);
   });
 
   it("returns a valid added extension on long path", function () {
-    var fname = path.join(__dirname, "./fixtures/test");
-    var expected = path.join(__dirname, "./fixtures/test.js");
+    var fname = path.join(import.meta.dirname, "./fixtures/test");
+    var expected = path.join(import.meta.dirname, "./fixtures/test.js");
     var result = replaceExt(fname, ".js");
     assert.deepStrictEqual(result, expected);
   });

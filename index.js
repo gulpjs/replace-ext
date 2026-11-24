@@ -1,8 +1,6 @@
-"use strict";
+import path from "path";
 
-var path = require("path");
-
-function replaceExt(npath, ext) {
+export default function replaceExt(npath, ext) {
   if (typeof npath !== "string") {
     return npath;
   }
@@ -28,5 +26,3 @@ function startsWithSingleDot(fpath) {
   var first2chars = fpath.slice(0, 2);
   return first2chars === "." + path.sep || first2chars === "./";
 }
-
-module.exports = replaceExt;
